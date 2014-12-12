@@ -32,9 +32,22 @@
   <ItemGroup>
     <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Behavior\UserBehavior.cs" />
+    <Compile Include="Entity\Profile.cs" />
+    <Compile Include="Manager\TinderManager.cs" />
+    <Compile Include="API\TinderAPIClient.cs" />
+    <Compile Include="Builder\ProfileBuilder.cs" />
+    <Compile Include="Interface\GenericInterface.cs" />
+    <Compile Include="Interface\SpecificInterface.cs" />
+    <Compile Include="Entity\User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Behavior\" />
+    <Folder Include="Manager\" />
+    <Folder Include="Entity\" />
+    <Folder Include="API\" />
+    <Folder Include="Builder\" />
+    <Folder Include="Interface\" />
   </ItemGroup>
 </Project>

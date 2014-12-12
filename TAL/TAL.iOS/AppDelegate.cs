@@ -35,9 +35,6 @@ namespace TAL.iOS
 			
 			// make the window visible
 			window.MakeKeyAndVisible ();
-
-			//MyClass tmp = new MyClass ();
-			//Console.WriteLine(tmp.GetNumberOfLike ());
 			
 			return true;
 		}
