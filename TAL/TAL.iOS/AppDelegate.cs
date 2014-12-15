@@ -6,6 +6,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
 using TAL.Core;
+using TAL.Core.Behavior;
 
 namespace TAL.iOS
 {
@@ -33,6 +34,8 @@ namespace TAL.iOS
 			// If you have defined a root view controller, set it here:
 			HomeViewController viewController = new HomeViewController ();
 			window.RootViewController = viewController;
+
+			UserBehavior behavior = new UserBehavior (viewController);
 			
 			// make the window visible
 			window.MakeKeyAndVisible ();

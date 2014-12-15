@@ -5,9 +5,11 @@ using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
+using TAL.Core.Interface;
+
 namespace TAL.iOS
 {
-	public partial class HomeViewController : UIViewController
+	public partial class HomeViewController : UIViewController,SpecificInterface
 	{
 		public HomeViewController () : base ("HomeViewController", null)
 		{
@@ -27,6 +29,14 @@ namespace TAL.iOS
 			this.View.BackgroundColor = UIColor.Blue;
 			
 			// Perform any additional setup after loading the view, typically from a nib.
+		}
+
+		public void SetNumberOfLikes(String numberOfLikes) {
+			Console.WriteLine("Number of like : "+numberOfLikes);
+		}
+
+		public void AddNewProfile(String profilePicture, String name) {
+			Console.WriteLine("Name : "+name);
 		}
 	}
 }

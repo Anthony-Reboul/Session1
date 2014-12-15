@@ -11,6 +11,11 @@ namespace TAL.Core.Behavior
 		private TinderManager Manager;
 		private GenericInterface Interface;
 
+		public UserBehavior (SpecificInterface specificInterface) {
+			this.Manager = new TinderManager();
+			this.Interface = new GenericInterface (specificInterface);
+		}
+
 		public void StartAutoLiking()
 		{
 			if (!this.Manager.HasNext ()) {

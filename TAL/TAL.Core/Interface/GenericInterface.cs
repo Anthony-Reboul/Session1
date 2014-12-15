@@ -8,8 +8,9 @@ namespace TAL.Core.Interface
 	{
 		private SpecificInterface SpecificInterface;
 
-		public GenericInterface ()
+		public GenericInterface (SpecificInterface specificInterface)
 		{
+			this.SpecificInterface = specificInterface;
 		}
 
 		public void Render(Profile profile, int numberOfLikes) 
