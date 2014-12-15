@@ -15,7 +15,6 @@ namespace TAL.Core.API
 
 		public void GetProfileList(string identifier)
 		{
-
 		}
 	}
 }

@@ -10,10 +10,12 @@ namespace TAL.Core.Behavior
 	{
 		private TinderManager Manager;
 		private GenericInterface Interface;
-		//private Timer aTimer;
 
 		public void StartAutoLiking()
 		{
+			if (!this.Manager.HasNext ()) {
+				this.Manager.GetNextProfileListPage ();
+			}
 			Profile profileJustLiked = this.Manager.LikeNext ();
 			int numberOfLikes = this.Manager.GetCurrentNumberOfLikes();
 			this.Interface.Render (profileJustLiked, numberOfLikes);

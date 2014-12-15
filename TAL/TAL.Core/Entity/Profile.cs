@@ -8,8 +8,19 @@ namespace TAL.Core.Entity
 		private String ProfilePicture;
 		private String DisplayName;
 
-		public Profile ()
+		public void SetIdentfier (String identifier)
 		{
+			this.Identifier = identifier;
+		}
+
+		public void SetProfilePictureURL (String url)
+		{
+			this.ProfilePicture = url;
+		}
+
+		public void SetName (String name)
+		{
+			this.DisplayName = name;
 		}
 
 		public String GetProfilePictureURL()
@@ -20,6 +31,11 @@ namespace TAL.Core.Entity
 		public String GetName()
 		{
 			return this.DisplayName;
+		}
+
+		public String GetIdentifier()
+		{
+			return this.Identifier;
 		}
 	}
 }

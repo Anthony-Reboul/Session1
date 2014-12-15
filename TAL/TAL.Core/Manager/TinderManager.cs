@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using TAL.Core.Entity;
+using TAL.Core.API;
+using TAL.Core.Builder;
 
 namespace TAL.Core.Manager
 {
@@ -9,15 +11,24 @@ namespace TAL.Core.Manager
 		private List<Profile> Profiles;
 		private int CurrentIndex;
 		private User CurrentUser;
+		private TinderAPIClient TinderAPIClient;
 
 		public TinderManager ()
 		{
-			CurrentIndex = 0;
+			this.CurrentIndex = 0;
 		}
 
-		public void GetPaginatedProfileList ()
-		{
+		public bool HasNext() {
+			return this.CurrentIndex < this.Profiles.Count;
+		}
 
+		public void GetNextProfileListPage ()
+		{
+			// Là on récupère un dictionnaire en JSON
+			// puis on transforme avec un builder
+			this.TinderAPIClient.GetProfileList (this.CurrentUser.GetFacebookToken());
+			Profile profile = ProfileBuilder.Build ();
+			this.Profiles.Add(profile);
 		}
 
 		/**
@@ -26,6 +37,8 @@ namespace TAL.Core.Manager
 		public Profile LikeNext()
 		{
 			if (this.CurrentIndex < this.Profiles.Count) {
+				Profile profile = this.Profiles [this.CurrentIndex];
+				this.TinderAPIClient.Like (profile.GetIdentifier());
 				this.CurrentIndex++;
 				this.CurrentUser.IncrementNumberOfLikes ();
 			}

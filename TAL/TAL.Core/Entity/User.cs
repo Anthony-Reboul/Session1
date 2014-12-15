@@ -7,8 +7,9 @@ namespace TAL.Core.Entity
 		private String FacebookToken;
 		private int NumberOfLikes;
 
-		public User ()
+		public User (String facebookToken)
 		{
+			this.FacebookToken = facebookToken;
 			this.NumberOfLikes = 0;
 		}
 
@@ -20,6 +21,11 @@ namespace TAL.Core.Entity
 		public int GetNumberOfLikes()
 		{
 			return this.NumberOfLikes;
+		}
+
+		public String GetFacebookToken()
+		{
+			return this.FacebookToken;
 		}
 	}
 }

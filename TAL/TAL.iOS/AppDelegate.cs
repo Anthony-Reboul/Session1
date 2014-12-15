@@ -31,7 +31,8 @@ namespace TAL.iOS
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			
 			// If you have defined a root view controller, set it here:
-			// window.RootViewController = myViewController;
+			HomeViewController viewController = new HomeViewController ();
+			window.RootViewController = viewController;
 			
 			// make the window visible
 			window.MakeKeyAndVisible ();
