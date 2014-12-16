@@ -7,6 +7,7 @@ using MonoTouch.UIKit;
 
 using TAL.Core;
 using TAL.Core.Behavior;
+using TAL.Core.Entity;
 
 namespace TAL.iOS
 {
@@ -35,7 +36,9 @@ namespace TAL.iOS
 			HomeViewController viewController = new HomeViewController ();
 			window.RootViewController = viewController;
 
-			UserBehavior behavior = new UserBehavior (viewController);
+			User user = new User ("10203672438505757","CAAGm0PX4ZCpsBADvnK9sIT4imTABgOSnFDhZB32VVK0yl0cSJuTP04OWeUYTYutFQSC27Qk4bkMH6sSL18WTW3XPKCs4fruOmMPBm9zPzi3AAv0tGZCnSYt05unmls3FpzKpFIvsPIzhOsEegkVNmjKMzlHZC9l1pxNZBtrxcSh9fwkDGIst2uECkF14LEmcZD");
+
+			UserBehavior behavior = new UserBehavior (user, viewController);
 			viewController.SetBehavior (behavior);
 			
 			// make the window visible

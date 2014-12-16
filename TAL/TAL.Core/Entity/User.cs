@@ -4,11 +4,13 @@ namespace TAL.Core.Entity
 {
 	public class User
 	{
+		private String FacebookId;
 		private String FacebookToken;
 		private int NumberOfLikes;
 
-		public User (String facebookToken)
+		public User (String facebookId, String facebookToken)
 		{
+			this.FacebookId = facebookId;
 			this.FacebookToken = facebookToken;
 			this.NumberOfLikes = 0;
 		}

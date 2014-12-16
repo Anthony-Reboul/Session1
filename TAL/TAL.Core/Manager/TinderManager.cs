@@ -13,9 +13,10 @@ namespace TAL.Core.Manager
 		private User CurrentUser;
 		private TinderAPIClient TinderAPIClient;
 
-		public TinderManager ()
+		public TinderManager (User user)
 		{
 			this.CurrentIndex = 0;
+			this.CurrentUser = user;
 		}
 
 		public bool HasNext() {

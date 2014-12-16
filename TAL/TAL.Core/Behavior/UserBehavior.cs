@@ -11,8 +11,8 @@ namespace TAL.Core.Behavior
 		private TinderManager Manager;
 		private GenericInterface Interface;
 
-		public UserBehavior (SpecificInterface specificInterface) {
-			this.Manager = new TinderManager();
+		public UserBehavior (User user, SpecificInterface specificInterface) {
+			this.Manager = new TinderManager(user);
 			this.Interface = new GenericInterface (specificInterface);
 		}
 

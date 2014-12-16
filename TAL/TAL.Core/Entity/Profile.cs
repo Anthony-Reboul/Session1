@@ -4,21 +4,21 @@ namespace TAL.Core.Entity
 {
 	public class Profile
 	{
-		private String Identifier;
-		private String ProfilePicture;
-		private String DisplayName;
+		private string Identifier;
+		private string ProfilePicture;
+		private string DisplayName;
 
-		public void SetIdentfier (String identifier)
+		public void SetIdentfier (string identifier)
 		{
 			this.Identifier = identifier;
 		}
 
-		public void SetProfilePictureURL (String url)
+		public void SetProfilePictureURL (string url)
 		{
 			this.ProfilePicture = url;
 		}
 
-		public void SetName (String name)
+		public void SetName (string name)
 		{
 			this.DisplayName = name;
 		}
