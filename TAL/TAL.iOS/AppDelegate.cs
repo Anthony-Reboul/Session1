@@ -36,6 +36,7 @@ namespace TAL.iOS
 			window.RootViewController = viewController;
 
 			UserBehavior behavior = new UserBehavior (viewController);
+			viewController.SetBehavior (behavior);
 			
 			// make the window visible
 			window.MakeKeyAndVisible ();

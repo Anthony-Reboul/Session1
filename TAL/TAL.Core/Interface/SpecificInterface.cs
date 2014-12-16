@@ -8,4 +8,3 @@ namespace TAL.Core.Interface
 		void AddNewProfile(String profilePicture, String name);
 	}
 }
-

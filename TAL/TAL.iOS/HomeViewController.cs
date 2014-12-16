@@ -6,11 +6,14 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 
 using TAL.Core.Interface;
+using TAL.Core.Behavior;
 
 namespace TAL.iOS
 {
 	public partial class HomeViewController : UIViewController,SpecificInterface
 	{
+		private UserBehavior Behavior;
+
 		public HomeViewController () : base ("HomeViewController", null)
 		{
 		}
@@ -26,6 +29,9 @@ namespace TAL.iOS
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
+
+
+
 			this.View.BackgroundColor = UIColor.Blue;
 			
 			// Perform any additional setup after loading the view, typically from a nib.
@@ -37,6 +43,10 @@ namespace TAL.iOS
 
 		public void AddNewProfile(String profilePicture, String name) {
 			Console.WriteLine("Name : "+name);
+		}
+
+		public void SetBehavior(UserBehavior behavior) {
+			this.Behavior = behavior;
 		}
 	}
 }
