@@ -31,16 +31,16 @@ namespace TAL.iOS
 		{
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
-			
+
 			// If you have defined a root view controller, set it here:
 			HomeViewController viewController = new HomeViewController ();
 			window.RootViewController = viewController;
 
-			User user = new User ("10203672438505757","CAAGm0PX4ZCpsBADvnK9sIT4imTABgOSnFDhZB32VVK0yl0cSJuTP04OWeUYTYutFQSC27Qk4bkMH6sSL18WTW3XPKCs4fruOmMPBm9zPzi3AAv0tGZCnSYt05unmls3FpzKpFIvsPIzhOsEegkVNmjKMzlHZC9l1pxNZBtrxcSh9fwkDGIst2uECkF14LEmcZD");
+			User user = new User ("10203672438505757","CAAGm0PX4ZCpsBAGOj7U1VBfLyMZCpkgJkCKlADKWd6T74GNRo2Vj8WGyGdkmsyjwEFwvZANrtbcqXqFBEExrM4HQytCqCxj7Fu3PAOmJX5QMvwgeDY0Lxz9XW1vPGYPNkjnX5g2ZChSupLlgte2GiTRSKgZBfZBLbkxYezUNJZCq0HZBkgqV9fBErNsmOWgTzFuaChAc1PiuZCn6Ur7BvDzhnOHCAQLi4kaEZD");
 
 			UserBehavior behavior = new UserBehavior (user, viewController);
 			viewController.SetBehavior (behavior);
-			
+
 			// make the window visible
 			window.MakeKeyAndVisible ();
 			

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -10,52 +13,48 @@ namespace TAL.Core.API
 	public class TinderAPIClient
 	{
 		private User CurrentUser;
+		private string BaseURL = "https://api.gotinder.com";
 
 		public TinderAPIClient (User user)
 		{
 			this.CurrentUser = user;
 		}
 
-		public async Task<bool> Auth() {
-			HttpClient httpClient = new HttpClient(); // Xamarin supports HttpClient!
-			Task<string> contentsTask = httpClient.GetStringAsync("https://api.gotinder.com");
-			string contents = await contentsTask;
-			return true;
+		public async Task<string> Auth() {
+			HttpClient httpClient = new HttpClient();
+
+			httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Tinder/4.0.4 (iPhone; iOS 7.1.1; Scale/2.00)");
+			httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/json");
+			var variables = new FormUrlEncodedContent(new[] 
+				{
+					new KeyValuePair<string, string>("facebook_token", this.CurrentUser.GetFacebookToken()),
+					new KeyValuePair<string, string>("facebook_id", this.CurrentUser.GetFacebookId()),
+				});
+			var contentsTask = httpClient.PostAsync(this.BaseURL+"/auth",variables);
+			HttpResponseMessage contents = await contentsTask;
+			return contents.Content.ReadAsStringAsync().Result;
 		}
 
-		public void Like(string identifier)
+		public async Task<string> Like(string identifier)
 		{
-
+			HttpClient httpClient = new HttpClient();
+			httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Tinder/4.0.4 (iPhone; iOS 7.1.1; Scale/2.00)");
+			httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/json");
+			httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Auth-Token", this.CurrentUser.GetTinderToken());
+			var contentsTask = httpClient.GetAsync(this.BaseURL+"/like/"+identifier);
+			HttpResponseMessage contents = await contentsTask;
+			return contents.Content.ReadAsStringAsync().Result;
 		}
 
-		public void GetProfileList(string identifier)
+		public async Task<string> GetProfileList()
 		{
-
-		}
-
-		public async Task<int> DownloadHomepage()
-		{
-			/*
-			var httpClient = new HttpClient(); // Xamarin supports HttpClient!
-
-			Task<string> contentsTask = httpClient.GetStringAsync("http://xamarin.com"); // async method!
-
-			// await! control returns to the caller and the task continues to run on another thread
-			string contents = await contentsTask;
-
-			ResultEditText.Text += "DownloadHomepage method continues after async call. . . . .\n";
-
-			// After contentTask completes, you can calculate the length of the string.
-			int exampleInt = contents.Length;
-
-			ResultEditText.Text += "Downloaded the html and found out the length.\n\n\n";
-
-			ResultEditText.Text += contents; // just dump the entire HTML
-
-			return exampleInt; // Task<TResult> returns an object of type TResult, in this case int
-			*/
-			return 0;
+			HttpClient httpClient = new HttpClient();
+			httpClient.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Tinder/4.0.4 (iPhone; iOS 7.1.1; Scale/2.00)");
+			httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/json");
+			httpClient.DefaultRequestHeaders.TryAddWithoutValidation("X-Auth-Token", this.CurrentUser.GetTinderToken());
+			var contentsTask = httpClient.PostAsync(this.BaseURL+"/user/recs",null);
+			HttpResponseMessage contents = await contentsTask;
+			return contents.Content.ReadAsStringAsync().Result;
 		}
 	}
 }
-

@@ -8,7 +8,7 @@ namespace TAL.Core.Entity
 		private string ProfilePicture;
 		private string DisplayName;
 
-		public void SetIdentfier (string identifier)
+		public void SetIdentifier (string identifier)
 		{
 			this.Identifier = identifier;
 		}

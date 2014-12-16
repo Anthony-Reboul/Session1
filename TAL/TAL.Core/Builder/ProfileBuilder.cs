@@ -1,4 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json.Linq;
 
 using TAL.Core.Entity;
 
@@ -6,11 +12,32 @@ namespace TAL.Core.Builder
 {
 	public class ProfileBuilder
 	{
-		public static Profile Build ()
+		public static List<Profile> BuildList (string data)
+		{
+			JObject root = JObject.Parse(data);
+			JArray results = (JArray)root["results"];
+			List<Profile> profiles = new List<Profile> ();
+			foreach (JObject result in results) {
+				Profile profile = ProfileBuilder.Build (result);
+				profiles.Add (profile);
+			}
+			return profiles;
+		}
+
+		private static Profile Build (JObject data)
 		{
 			Profile profile = new Profile ();
-			profile.SetProfilePictureURL ("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p160x160/10599210_10203672438505757_9188881923534470968_n.jpg?oh=0350c8f847b81bae8757f81d1f122e55&oe=554646D9&__gda__=1426648904_fcc6921e626b539350cb6e74b3df75b3");
-			profile.SetName ("Julien Gomès");
+			JArray photos = (JArray)data ["photos"];
+			if (photos.Count > 0) {
+				JObject photo = (JObject)photos [0];
+				JArray processedFiles = (JArray)photo ["processedFiles"];
+				if (processedFiles.Count > 0) {
+					JObject processedFile = (JObject)processedFiles [0];
+					profile.SetProfilePictureURL ((string)processedFile["url"]);
+				}
+			}
+			profile.SetName ((string)data["name"]);
+			profile.SetIdentifier ((string)data["_id"]);
 			return profile;
 		}
 	}
