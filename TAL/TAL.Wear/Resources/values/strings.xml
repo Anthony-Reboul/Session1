@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
 	<string name="app_name">TAL.Wear</string>
 	<string name="hello_round">I\'m Round. Tap Me!</string>
 	<string name="hello_rect">I\'m Rect. Tap Me!</string>
-
+  <string name="DefaultLikeNumber">0</string>
+  <string name="StartLikingButton">Start auto-like</string>
+  <string name="StopLikingButton">Stop auto-like</string>
 </resources>

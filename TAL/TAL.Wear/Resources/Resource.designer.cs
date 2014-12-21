@@ -662,17 +662,23 @@ namespace TAL.Wear
 			// aapt resource value: 0x7f090007
 			public const int left = 2131296263;
 			
+			// aapt resource value: 0x7f090012
+			public const int like_count = 2131296274;
+			
 			// aapt resource value: 0x7f09000e
 			public const int message = 2131296270;
 			
-			// aapt resource value: 0x7f090012
-			public const int myButton = 2131296274;
+			// aapt resource value: 0x7f090014
+			public const int myButton = 2131296276;
 			
 			// aapt resource value: 0x7f090001
 			public const int none = 2131296257;
 			
 			// aapt resource value: 0x7f090002
 			public const int normal = 2131296258;
+			
+			// aapt resource value: 0x7f090013
+			public const int profile_name = 2131296275;
 			
 			// aapt resource value: 0x7f090008
 			public const int right = 2131296264;
@@ -683,11 +689,11 @@ namespace TAL.Wear
 			// aapt resource value: 0x7f090004
 			public const int terrain = 2131296260;
 			
-			// aapt resource value: 0x7f090014
-			public const int text = 2131296276;
+			// aapt resource value: 0x7f090016
+			public const int text = 2131296278;
 			
-			// aapt resource value: 0x7f090013
-			public const int title = 2131296275;
+			// aapt resource value: 0x7f090015
+			public const int title = 2131296277;
 			
 			// aapt resource value: 0x7f090009
 			public const int top = 2131296265;
@@ -754,6 +760,15 @@ namespace TAL.Wear
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f040022
+			public const int DefaultLikeNumber = 2130968610;
+			
+			// aapt resource value: 0x7f040023
+			public const int StartLikingButton = 2130968611;
+			
+			// aapt resource value: 0x7f040024
+			public const int StopLikingButton = 2130968612;
 			
 			// aapt resource value: 0x7f04001f
 			public const int app_name = 2130968607;
