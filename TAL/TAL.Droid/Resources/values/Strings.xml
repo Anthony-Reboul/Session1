@@ -2,4 +2,7 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">TAL.Droid</string>
+    <string name="DefaultLikeNumber">0</string>
+    <string name="StartLikingButton">Start auto-like</string>
+    <string name="StopLikingButton">Stop auto-like</string>
 </resources>
